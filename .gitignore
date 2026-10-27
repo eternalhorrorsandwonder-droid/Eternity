@@ -1,0 +1,13 @@
+# Dependencies and build output.
+node_modules/
+dist/
+*.local
+
+# Headless test bundles produced by esbuild (see test/README notes).
+test/*.mjs
+
+# Editor and OS noise.
+.DS_Store
+.vscode/
+.idea/
+*.log
