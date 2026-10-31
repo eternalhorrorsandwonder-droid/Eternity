@@ -1,0 +1,25 @@
+{
+  "name": "eternity-sundered-vale",
+  "version": "6.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --test tests/*.test.js",
+    "build:html": "npm run build && node scripts/build-standalone.mjs",
+    "test:browser": "node tests/browser-v3.mjs && node tests/browser-v4.mjs && node tests/browser-mechanics-v4.mjs && node tests/browser-mobile-v4.mjs && node tests/browser-v5.mjs && node tests/browser-mobile-v5.mjs && node tests/browser-v6.mjs && node tests/browser-touch-v6.mjs",
+    "test:offline": "node tests/browser-offline-v6.mjs",
+    "test:migration": "node tests/browser-migrate-v4.mjs && node tests/browser-migrate-v5.mjs && node tests/browser-migrate-v6.mjs"
+  },
+  "dependencies": {
+    "@fontsource/cinzel": "^5.2.7",
+    "@fontsource/dm-sans": "^5.2.6",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.64.1",
+    "vite": "^7.1.7"
+  }
+}

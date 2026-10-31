@@ -1,0 +1,27 @@
+# Version 4 — The Wayfinder's Companion
+
+> **HTML edition:** [`Eternity-V4.html`](Eternity-V4.html) is the self-contained offline build. [README.md](README.md) explains controls, saves, requirements and rebuilding. This historical build remains preserved; the current builder produces Version 5 without overwriting it.
+
+## What's new
+
+- **Twelve optional field routes**, four per chapter, combine specific existing locations, discoveries, quests and encounters into authored journeys. Progress is retroactive; each ready route can be claimed once near a restored waystone for experience, gold, sometimes remedies, and one seal. Three achievements track route milestones. These routes revisit the existing 30 regions; they are not twelve new maps.
+- **Field kit:** craft and ready one of three preparations near a restored waystone. Dawnflash interrupts nearby non-boss creatures for 1.2 seconds; Trail Tonic adds 15% movement speed for 10 seconds; Moss Draught restores up to 36 vitality over six seconds and is interrupted by damage. Tonic and Draught unlock after two and four route seals. Each type holds at most five, consumes materials and has a cooldown. A flash does not cancel already-fired bolts.
+- **Wayfinding:** quest/route objectives show a straight-line compass bearing and a minimap/atlas destination. A discovered-region pin takes priority. A bounded local A* route lets clicks steer around solid objects and approach interactables; manual input cancels movement, and a blocked route retries before stopping. Neither system is unlimited automatic navigation.
+- **Field guide:** seven distinct encounter entries unlock on observation, with attack tells and counterplay; defeat counts are bounded. Two achievements reward observing encounters. On migration, previously recorded sentinel/caster totals and boss flags are recovered, without inventing older Hushling/Thornling totals.
+- **Quality of life:** action keys can be rebound without conflicting with each other or movement/pause; larger menu text and higher UI contrast are optional. Rowan, Bram and Kea have new dialogue portraits; body text on the new boards is larger and darker by default. Compact landscape layouts keep the utility bar, dock, joystick, combat buttons and notifications separated at the tested screen sizes; the smallest layout condenses the tracker. Browser zoom is no longer explicitly disabled.
+- **Save recovery:** HUD status distinguishes unsaved, saving, saved and failure; movement and gradual healing mark the current state unsaved without encrypting each frame. Pause includes Save Now and an export of the **live in-memory journey**, allowing a backup after storage failure. Session revisions prevent an older save completion from marking later changes as durable. Visible-region and entity lists are cached until the player changes regions.
+
+## Compatibility and state
+
+The save schema is now version 4. Versions 1–3 migrate into it using the same encrypted envelope and slot keys. New route claims are checked against completed world objectives; kit quantities, known IDs, field-guide counts and pins are validated and bounded. A pin must reference a discovered region. Keep a backup before upgrading; older editions may not read newer saves. See the README for origin-specific storage and the limits of the default embedded encryption key.
+
+## Validation performed
+
+- **67 Node tests** passed for state and migration bounds, authored routes and targets, one-time rewards, kit recipes and flash behavior, local pathfinding, bindings, saves, races, cryptography, collision, encounters, archives and placement checks.
+- Chromium tests exercised routes and claims, field-guide display, kit crafting and use, rebinding and accessibility toggles, manual movement cancellation, collision-aware click movement, click-to-NPC interaction, blocked-path termination, tonic non-stacking and draught interruption. A simulated storage quota failure was followed by a passphrase-protected export containing the unsaved in-memory state and a successful Save Now retry. Some scenarios use dev-only positioning/resources and are not full playthroughs.
+- Touch emulation checked controls and boards at **801 × 320**, **720 × 320**, **568 × 320**, **480 × 320** and **400 × 260**, plus portrait pause/landscape resume. The 400-pixel layout uses smaller dock targets to prevent overlap; real-device usability remains unverified.
+- A real passphrase-protected V3 HTML export was imported through the V4 UI, including a wrong-passphrase rejection. The V4 `file://` edition was opened without network access, loaded a dialogue portrait and retained a tracked route after encrypted reload. A hosted production build was reopened offline after caching 36 resources, including the local models and portraits.
+
+## Remaining gaps
+
+This is still a stylized, single-player foundation, not the requested online MMORPG or an expansive high-poly production game. It falls substantially short of the separate 30,000 meaningful game-code and 5,000-line engine quotas; no filler was added to claim otherwise. Ten hours of authored play, consistent 60 fps and real-device mobile performance have not been established. Tests cover important paths, not every possible bug or a complete balance playthrough. More varied, authored world content, longer balance testing, real-device profiling and authoritative multiplayer infrastructure are needed for the original full scope.
